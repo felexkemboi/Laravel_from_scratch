@@ -26,10 +26,15 @@ class ProjectsController extends Controller
     //after the user submits the form 
    public function store()
     {
-    	request() -> validate([
+    	
+        Project::create(
+            request() -> validate([
             'title' =>['required','min:3','max:255'],
             'description' =>['required','min:3','max:255']
-        ]);
+        ])
+
+        );
+
     	return redirect('/projects');
     } 
 

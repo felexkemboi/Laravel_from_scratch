@@ -47,7 +47,7 @@ class ProjectsController extends Controller
    
 
 
-   
+
     //Route::get('/projects/{project}',
     public function show($id)
     {
@@ -72,23 +72,9 @@ class ProjectsController extends Controller
 
     public function destroy($id)
     {
-        $project = Project::find($id);
-        $project -> delete();
+        Project::find($id) -> delete();
         return redirect('/projects');
-        
-        //return view('projects.detail',compact('project')); //,compact('projects')
     }
 
 }
 
-
-
-    /*
-
-    public function details($id)
-    {
-        $project = Project::find($id);
-
-        return view('projects.detail',compact('project')); //,compact('projects')
-    }
-    */

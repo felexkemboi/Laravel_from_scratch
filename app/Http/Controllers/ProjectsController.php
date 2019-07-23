@@ -17,15 +17,13 @@ class ProjectsController extends Controller
     } 
 
 
-    //Route::get('/projects/create',
     public function create()
     {
 
     	return view('projects.create');
     } 
 
-
-    //Route::post('/projects', 
+    //after the user submits the form 
    public function store()
     {
     	Project::create(request(['title','description']));
@@ -33,7 +31,6 @@ class ProjectsController extends Controller
     } 
 
 
-    //Route::get('/projects/{project}/edit',
     public function edit($id)
     {
     	$project = Project::find($id);
@@ -41,24 +38,22 @@ class ProjectsController extends Controller
     	return view('projects.edit',compact('project')); //,compact('projects')
     }
    
-    public function show($id)
+    public function show(Project $project)
     {
-        $project = Project::find($id);
 
-        return view('projects.show',compact('project')); //,compact('projects')
+        return view('projects.show',compact('project'));
     }
 
 
     //Route::get('/projects/{project}'
-    public function update($id)
+    public function update(Project $project)
     {
-    	$project = Project::find($id);
-
-    	$project -> title = request('title');
-    	$project -> description = request('description');
+    	//$project = Project::find($id);
+        $project -> update(request(['title','description']));
+    	/*$project -> title = request('title');
+    	$project -> description = request('description');*/
     	$project -> save();
     	return redirect('/projects');
-        //dd('Hello');
     }
 
 

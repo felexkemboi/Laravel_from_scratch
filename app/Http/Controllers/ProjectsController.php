@@ -28,11 +28,7 @@ class ProjectsController extends Controller
     //Route::post('/projects', 
    public function store()
     {
-    	$project = new Project();
-    	$project -> title = request("title");
-    	$project -> description = request("description");
-    	$project -> save();
-
+    	Project::create(request(['title','description']));
     	return redirect('/projects');
     } 
 
@@ -45,10 +41,6 @@ class ProjectsController extends Controller
     	return view('projects.edit',compact('project')); //,compact('projects')
     }
    
-
-
-
-    //Route::get('/projects/{project}',
     public function show($id)
     {
         $project = Project::find($id);

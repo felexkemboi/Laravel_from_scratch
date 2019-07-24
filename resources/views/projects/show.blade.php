@@ -3,10 +3,12 @@
 
  
 @section('content')
+  <div style="margin-bottom: 1em;">
     <h1 class="title">{{ $project -> title }}</h1>
     <div class="content">{{ $project -> description }} </div>
     <button><p><a href="/projects/{{ $project->id }}/edit">Edit</a></p></button> 
     <button><p><a href="/projects">Home</a></p></button>
+  </div>
 
     @if ($project -> tasks -> count())
       <div class="box">
@@ -17,7 +19,7 @@
             @method('PATCH')
             @csrf
 
-            <label class="checkbox" {{ $task ->completed? 'is-completed': '' }}for="completed">
+            <label class='checkbox' {{ $task -> completed ? 'is-completed': '' }}for="completed">
               <input type="checkbox" name="completed" onChange="this.form.submit()" {{ $task-> completed ? 'checked' : ' '}}> <!-- -->
               {{ $task -> description }}
             </label>
@@ -31,7 +33,7 @@
     <form  action="/projects/{{ $project-> id }}/tasks" method="POST"   class="box" >
 
       @csrf
-      
+
       <div class="field">
         <label class="label" for="description">New Task</label>
         <div class="control">

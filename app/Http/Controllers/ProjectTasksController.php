@@ -16,8 +16,6 @@ class ProjectTasksController extends Controller
     public function update( Task $task)
     {
        $task -> update([ 'completed' => request()-> has('completed') ]);
-
-       //return redirect back();
        return back();
     }
 
@@ -26,7 +24,6 @@ class ProjectTasksController extends Controller
     {
        $project -> addTask(request('description'));
 
-       //return redirect back();
        return back();
     }
 

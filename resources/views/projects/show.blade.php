@@ -19,10 +19,10 @@
             @method('PATCH')
             @csrf
 
-            <label class='checkbox' {{ $task -> completed ? 'is-completed': '' }}for="completed">
-              <input type="checkbox" name="completed" onChange="this.form.submit()" {{ $task-> completed ? 'checked' : ' '}}> <!-- -->
+          <label class="checkbox {{ $task->completed ? 'is-completed': '' }}" for="completed">
+            <input type="checkbox" name="completed" onChange="this.form.submit()" {{ $task->completed ? 'checked' : ''}}>
               {{ $task -> description }}
-            </label>
+          </label>
           </form>
         </div>
         @endforeach
@@ -37,13 +37,13 @@
       <div class="field">
         <label class="label" for="description">New Task</label>
         <div class="control">
-          <input type="text" class="input" name="description" placeholder="New Task">
+          <input type="text" class="input" name="description" placeholder="New Task" required>
         </div>
       </div>
       
       <div class="field">
         <div class="control">
-          <button type="submit" class="button is-link"> Add Task</button>
+          <button type="submit" class="button is-link">Add Task</button>
         </div>
       </div>
 

@@ -15,36 +15,15 @@
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');*/
 
-Route::get('/projects',                'ProjectsController@index');
+Route::get('/',                'ProjectsController@index');
 Route::get('/projects/create',         'ProjectsController@create');
 Route::get('/projects/{project}',      'ProjectsController@show');
 Route::post('/projects',               'ProjectsController@store');
 Route::get('/projects/{project}/edit', 'ProjectsController@edit');
 Route::patch('/projects/{project}',      'ProjectsController@update');
 Route::delete('/projects/{project}/delete', 'ProjectController@destroy');
-
-
 Route::patch('/tasks/{task}',                       'ProjectTasksController@update');
 Route::post('projects/{project}/tasks',              'ProjectTasksController@store');
-
-
-
-
-/*
-
-Route::get('/projects/{id}', 'ProjectController@show');
-Route::post('/create','ProjectController@store');
-Route::get('/create', 'ProjectController@create');
-Route::get('/projects/{id}/delete', 'ProjectController@destroy');
-Route::put('/edit','ProjectController@update');
-Route::get('/projects/{id}/edit', 'ProjectController@edit');
-
-*/
-
-
-
-
-
 
 Auth::routes();
 

@@ -45,3 +45,7 @@ Route::get('/projects/{id}/edit', 'ProjectController@edit');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

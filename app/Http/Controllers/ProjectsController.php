@@ -17,9 +17,9 @@ class ProjectsController extends Controller
     public function index()
     {
      	//$projects = Project::where('owner_id',auth()->id())->get();
-        $projects = auth()->user()-> projects;
+        //$projects = auth()->user()-> projects;
 
-    	return view('projects.index',compact('projects'));
+    	return view('projects.index', ['projects' => auth()->user()-> projects]);  //compact('projects')
     } 
 
 
@@ -43,7 +43,9 @@ class ProjectsController extends Controller
         ]);
 
         Project::create($attributes + ['owner_id' => auth() -> id()]);
+
         //);
+        event(new ProjectCreated($project))
 
     	return redirect('/projects');
     } 

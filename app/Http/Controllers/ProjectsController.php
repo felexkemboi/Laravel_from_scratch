@@ -10,7 +10,10 @@ use Illuminate\Filesystem\Filesystem;
 class ProjectsController extends Controller
 {
 
-    //Route::get('/projects'  ;
+    public function __construct(){
+        $this -> middleware('auth'); //$this -> middleware('auth') -> only([ 'store','update']); or $this -> middleware('auth') -> except([ 'store']);    
+    }
+
     public function index()
     {
      	$projects = Project::where('owner_id',auth()->id())->get();

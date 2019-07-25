@@ -27,4 +27,4 @@ Route::post('projects/{project}/tasks',              'ProjectTasksController@sto
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');   //  -> middleware('auth') incase you want auth 

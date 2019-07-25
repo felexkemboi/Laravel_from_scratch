@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
+use Illuminate\Filesystem\Filesystem;
+
 
 class ProjectsController extends Controller
 {
@@ -23,7 +25,6 @@ class ProjectsController extends Controller
     	return view('projects.create');
     } 
 
-    //after the user submits the form 
    public function store()
     {
     	
@@ -43,7 +44,7 @@ class ProjectsController extends Controller
     {
     	$project = Project::find($id);
 
-    	return view('projects.edit',compact('project')); //,compact('projects')
+    	return view('projects.edit',compact('project')); 
     }
    
     public function show(Project $project)
@@ -53,13 +54,9 @@ class ProjectsController extends Controller
     }
 
 
-    //Route::get('/projects/{project}'
     public function update(Project $project)
     {
-    	//$project = Project::find($id);
         $project -> update(request(['title','description']));
-    	/*$project -> title = request('title');
-    	$project -> description = request('description');*/
     	$project -> save();
     	return redirect('/projects');
     }
